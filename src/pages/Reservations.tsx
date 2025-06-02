@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -64,7 +63,7 @@ const Reservations = () => {
       guests: formData.guests,
       specialRequests: formData.specialRequests,
       status: 'confirmed',
-      paymentStatus: formData.paymentOption === 'pay-now' ? 'paid' : 'unpaid',
+      paymentStatus: formData.paymentOption === 'pay-now' ? 'pending' : 'unpaid',
       createdAt: new Date().toISOString()
     };
 
@@ -76,8 +75,15 @@ const Reservations = () => {
       description: `Your table for ${formData.guests} on ${format(date, 'MMM dd, yyyy')} at ${formData.time} has been booked.`,
     });
 
-    // Redirect to profile or home
-    navigate(user ? '/profile' : '/');
+    // Redirect based on payment option
+    if (formData.paymentOption === 'pay-now') {
+      navigate('/payment', { state: { reservation } });
+    } else {
+      // Show success message and redirect to home after a short delay
+      setTimeout(() => {
+        navigate('/');
+      }, 2000);
+    }
   };
 
   return (
