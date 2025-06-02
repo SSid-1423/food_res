@@ -10,6 +10,17 @@ const Home = () => {
 
   return (
     <div className="min-h-screen">
+      {/* Promotional Marquee */}
+      <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white py-2 overflow-hidden">
+        <div className="animate-marquee whitespace-nowrap">
+          <span className="text-sm font-medium mx-4">🎉 Grand Opening Special: 20% OFF on all orders!</span>
+          <span className="text-sm font-medium mx-4">📞 Call +91 98765 43210 for instant reservations</span>
+          <span className="text-sm font-medium mx-4">🍽️ Try our signature dishes - Butter Chicken & Biryani</span>
+          <span className="text-sm font-medium mx-4">⭐ Rated #1 Restaurant in the City</span>
+          <span className="text-sm font-medium mx-4">🎊 Use code WELCOME20 for 20% discount on payment</span>
+        </div>
+      </div>
+
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center bg-gradient-to-r from-orange-600 via-red-600 to-pink-600">
         <div className="absolute inset-0 bg-black/40"></div>
@@ -95,6 +106,16 @@ const Home = () => {
 
       {/* Call Booking Section */}
       <CallBooking />
+
+      {/* Special Offers Marquee */}
+      <div className="bg-yellow-400 text-black py-3 overflow-hidden">
+        <div className="animate-marquee whitespace-nowrap">
+          <span className="text-base font-bold mx-6">🔥 Limited Time: Buy 2 Get 1 FREE on all appetizers!</span>
+          <span className="text-base font-bold mx-6">🍰 Complimentary dessert with every family meal</span>
+          <span className="text-base font-bold mx-6">🥂 Happy Hours: 4 PM - 7 PM with 30% off beverages</span>
+          <span className="text-base font-bold mx-6">👨‍👩‍👧‍👦 Kids eat free on Sundays with adult meal purchase</span>
+        </div>
+      </div>
 
       {/* About Section */}
       <section className="py-20 bg-gray-50">
