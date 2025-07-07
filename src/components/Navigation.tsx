@@ -9,10 +9,21 @@ import { categories } from '@/data/menu';
 const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
   const { user, logout } = useAuth();
   const location = useLocation();
 
   const isActive = (path: string) => location.pathname === path;
+
+  const handleLogout = async () => {
+    setIsLoggingOut(true);
+    
+    // Show animation for 2 seconds
+    setTimeout(() => {
+      logout();
+      setIsLoggingOut(false);
+    }, 2000);
+  };
 
   return (
     <nav className="bg-white shadow-lg sticky top-0 z-50">
@@ -75,8 +86,14 @@ const Navigation = () => {
                   <User size={20} />
                   <span>{user.name}</span>
                 </Link>
-                <Button variant="outline" onClick={logout} size="sm">
-                  Logout
+                <Button 
+                  variant="outline" 
+                  onClick={handleLogout} 
+                  size="sm"
+                  disabled={isLoggingOut}
+                  className={`transition-all duration-300 ${isLoggingOut ? 'animate-pulse bg-gradient-primary text-primary-foreground' : ''}`}
+                >
+                  {isLoggingOut ? '✨ Logging out...' : 'Logout'}
                 </Button>
               </div>
             ) : (
@@ -85,7 +102,7 @@ const Navigation = () => {
                   <Button variant="outline" size="sm">Login</Button>
                 </Link>
                 <Link to="/signup">
-                  <Button size="sm" className="bg-orange-600 hover:bg-orange-700">Sign Up</Button>
+                  <Button size="sm" className="bg-gradient-primary hover:shadow-glow transition-all duration-300">Sign Up</Button>
                 </Link>
               </div>
             )}
@@ -138,8 +155,14 @@ const Navigation = () => {
                   >
                     Profile
                   </Link>
-                  <Button variant="outline" onClick={() => { logout(); setIsMobileMenuOpen(false); }} size="sm" className="w-fit">
-                    Logout
+                  <Button 
+                    variant="outline" 
+                    onClick={() => { handleLogout(); setIsMobileMenuOpen(false); }} 
+                    size="sm" 
+                    className={`w-fit transition-all duration-300 ${isLoggingOut ? 'animate-pulse bg-gradient-primary text-primary-foreground' : ''}`}
+                    disabled={isLoggingOut}
+                  >
+                    {isLoggingOut ? '✨ Logging out...' : 'Logout'}
                   </Button>
                 </div>
               ) : (
@@ -154,7 +177,7 @@ const Navigation = () => {
                     to="/signup"
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    <Button size="sm" className="w-full bg-orange-600 hover:bg-orange-700">Sign Up</Button>
+                    <Button size="sm" className="w-full bg-gradient-primary hover:shadow-glow transition-all duration-300">Sign Up</Button>
                   </Link>
                 </div>
               )}

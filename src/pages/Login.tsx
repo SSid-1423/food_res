@@ -47,11 +47,11 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <Card className="w-full max-w-md">
+    <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <Card className="w-full max-w-md shadow-3d glass-effect animate-bounce-in">
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl font-bold">Welcome back</CardTitle>
-          <CardDescription>
+          <CardTitle className="text-2xl font-bold text-gradient">Welcome back</CardTitle>
+          <CardDescription className="text-muted-foreground">
             Sign in to your Savora account
           </CardDescription>
         </CardHeader>
@@ -83,14 +83,14 @@ const Login = () => {
           <CardFooter className="flex flex-col space-y-4">
             <Button 
               type="submit" 
-              className="w-full bg-orange-600 hover:bg-orange-700"
+              className="w-full bg-gradient-primary hover:shadow-glow transition-all duration-300"
               disabled={isLoading}
             >
               {isLoading ? 'Signing in...' : 'Sign In'}
             </Button>
-            <p className="text-sm text-center text-gray-600">
+            <p className="text-sm text-center text-muted-foreground">
               Don't have an account?{' '}
-              <Link to="/signup" className="text-orange-600 hover:text-orange-700 font-medium">
+              <Link to="/signup" className="text-primary hover:text-primary-glow font-medium transition-colors">
                 Sign up
               </Link>
             </p>

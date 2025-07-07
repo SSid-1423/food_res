@@ -66,11 +66,11 @@ const Signup = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <Card className="w-full max-w-md">
+    <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <Card className="w-full max-w-md shadow-3d glass-effect animate-bounce-in">
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl font-bold">Join Savora</CardTitle>
-          <CardDescription>
+          <CardTitle className="text-2xl font-bold text-gradient">Join Savora</CardTitle>
+          <CardDescription className="text-muted-foreground">
             Create your account to start dining with us
           </CardDescription>
         </CardHeader>
@@ -135,14 +135,14 @@ const Signup = () => {
           <CardFooter className="flex flex-col space-y-4">
             <Button 
               type="submit" 
-              className="w-full bg-orange-600 hover:bg-orange-700"
+              className="w-full bg-gradient-primary hover:shadow-glow transition-all duration-300"
               disabled={isLoading}
             >
               {isLoading ? 'Creating account...' : 'Create Account'}
             </Button>
-            <p className="text-sm text-center text-gray-600">
+            <p className="text-sm text-center text-muted-foreground">
               Already have an account?{' '}
-              <Link to="/login" className="text-orange-600 hover:text-orange-700 font-medium">
+              <Link to="/login" className="text-primary hover:text-primary-glow font-medium transition-colors">
                 Sign in
               </Link>
             </p>
